@@ -1,3 +1,5 @@
+[![Project Videos Tests](https://github.com/fred1599/video_project/actions/workflows/project-tests.yml/badge.svg)](https://github.com/fred1599/video_project/actions/workflows/project-tests.yml)
+
 # Video Processing Application
 
 This application allows performing various operations on video files, such as format conversion, repair, and audio extraction.
