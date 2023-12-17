@@ -55,3 +55,51 @@ The application is executed via the command line. Here are the different command
 
 - Python 3.10
 - `ffmpeg`
+
+## Contribuer au Projet
+
+Nous accueillons avec plaisir les contributions de la communauté ! Si vous souhaitez contribuer au projet [video_project](https://github.com/fred1599/video_project), voici les étapes à suivre :
+
+1. **Forker le Projet**  
+   Commencez par forker le projet sur votre compte GitHub. Cela crée une copie personnelle du projet sur laquelle vous pouvez travailler. Vous pouvez forker le projet en cliquant sur le bouton "Fork" en haut à droite de la page du projet.
+
+2. **Cloner le Fork**  
+   Ensuite, clonez votre fork sur votre machine locale. Cela vous permettra de travailler sur le projet en local. Utilisez la commande :
+
+`git clone https://github.com/votre-username/video_project.git`
+
+Remplacez `votre-username` par votre nom d'utilisateur GitHub.
+
+3. **Créer une Branche**  
+Créez une nouvelle branche pour vos modifications. Cela aide à séparer vos contributions des autres et facilite la gestion des modifications. Par exemple :
+
+`git checkout -b nom-de-votre-branche`
+
+4. **Apporter vos Modifications**  
+Effectuez vos modifications dans cette branche. Assurez-vous de suivre les conventions de codage du projet et d'ajouter des tests si nécessaire.
+
+5. **Commit et Push**  
+Après avoir effectué vos modifications, committez-les et poussez-les sur votre fork. Par exemple :
+
+```bash
+git commit -m "Ajout d'une nouvelle fonctionnalité"
+git push origin nom-de-votre-branche
+```
+
+6. **Créer une Pull Request**  
+Une fois vos modifications poussées sur votre fork, créez une pull request sur le dépôt principal. Allez sur la page GitHub de votre fork et cliquez sur "Pull Request", puis suivez les instructions pour soumettre votre pull request.
+
+7. **Attendez la Revue**  
+Votre pull request sera examinée par les mainteneurs du projet. Ils peuvent vous demander de faire des modifications supplémentaires. Une fois votre pull request approuvée, elle sera fusionnée dans le projet principal.
+
+8. **Gardez votre Fork à Jour**  
+Après avoir contribué, gardez votre fork à jour avec le dépôt principal. Vous pouvez le faire en configurant un remote "upstream" et en synchronisant régulièrement votre fork :
+
+```bash
+git remote add upstream https://github.com/fred1599/video_project.git
+git fetch upstream
+git checkout master
+git merge upstream/master
+```
+
+Nous vous remercions pour votre contribution au projet !
