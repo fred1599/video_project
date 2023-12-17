@@ -53,4 +53,3 @@ The application is executed via the command line. Here are the different command
 
 - Python 3.10
 - `ffmpeg`
-
