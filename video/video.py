@@ -32,7 +32,7 @@ class Video:
         self._parse_metadata(metadata)
 
     def _parse_metadata(self, metadata):
-        """ Analyse les métadonnées et attribue les valeurs aux attributs de la classe """
+        """ Parses the metadata and assigns values to the class attributes """
         if 'format' in metadata:
             self.format = metadata['format'].get('format_name')
             self.duration = float(metadata['format'].get('duration', 0.0))
@@ -98,7 +98,7 @@ class Video:
 
         result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         if result.returncode != 0:
-            print("Erreur lors de l'extraction de l'audio :", result.stderr.decode())
+            print("Error during audio extraction:", result.stderr.decode())
             return None
 
         return output_file
