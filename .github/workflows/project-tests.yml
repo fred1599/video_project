@@ -25,6 +25,10 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         # Installez ici d'autres dépendances si nécessaire
+    - name: Install ffmpeg
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y ffmpeg
     - name: Run tests
       run: |
         python -m unittest video.tests.test_video_class
