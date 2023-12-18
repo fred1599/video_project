@@ -1,4 +1,5 @@
 import platform
+import shutil
 import subprocess
 import sys
 from typing import List
@@ -13,14 +14,9 @@ SUPPORTED_VIDEO_FORMATS: List[str] = ["mp4", "avi", "mkv", "mov", "flv", "wmv"]
 
 def is_tool_installed(name: str) -> bool:
     """Checks if a tool is installed"""
-    try:
-        command = "where" if platform.system() == "Windows" else "which"
-        subprocess.run(
-            [command, name], stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True
-        )
+    if shutil.which("ffmpeg") is not None:
         return True
-    except subprocess.CalledProcessError:
-        return False
+    return False
 
 
 def print_colored(text: str, color: str) -> None:
