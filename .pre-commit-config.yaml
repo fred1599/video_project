@@ -24,3 +24,9 @@ repos:
     hooks:
     -   id: mypy
         args: [--strict, --ignore-missing-imports]
+
+-   repo: https://github.com/myint/autoflake
+    rev: v2.2.1
+    hooks:
+    -   id: autoflake
+        args: ['--in-place', '--remove-all-unused-imports']

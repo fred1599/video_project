@@ -2,7 +2,7 @@ import json
 import os
 import shutil
 import subprocess
-from typing import IO, Any, Dict, Generator, List, Optional, Union
+from typing import Any, Dict, Generator, List, Optional
 
 
 class Video:
