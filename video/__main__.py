@@ -67,12 +67,15 @@ def main(
             )
             raise typer.Exit()
 
-        converted_file = video.convert(output, quality)
-
-        if converted_file:
-            typer.echo(f"Video converted and saved as: {converted_file}")
-        else:
-            typer.echo("The conversion failed.")
+        try:
+            for line in video.convert(output, quality):
+                typer.echo(line)
+        except FileNotFoundError as e:
+            typer.echo(str(e))
+            raise typer.Exit()
+        except Exception as e:
+            typer.echo(f"An error occurred during conversion: {str(e)}")
+            raise typer.Exit()
 
     elif command == "repair":
         repaired_file = video.repair()

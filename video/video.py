@@ -1,7 +1,8 @@
 import json
 import os
+import shutil
 import subprocess
-from typing import Any, Dict, List, Optional
+from typing import IO, Any, Dict, Generator, List, Optional, Union
 
 
 class Video:
@@ -51,7 +52,32 @@ class Video:
             elif stream["codec_type"] == "subtitle":
                 self.subtitles.append(stream.get("codec_name"))
 
-    def convert(self, output_format: str, quality: str = "middle") -> Optional[str]:
+    @staticmethod
+    def _run(command: list[str]) -> Generator[str, None, None]:
+        process = subprocess.Popen(
+            command,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+        )
+
+        assert process.stderr is not None
+
+        while True:
+            line = process.stderr.readline().rstrip()
+            if not line and process.poll() is not None:
+                break
+            yield line
+
+            if process.poll() is not None:
+                break
+
+        if process.returncode != 0:
+            raise Exception(f"Error command: {command[0]}")
+
+    def convert(
+        self, output_format: str, quality: str = "middle"
+    ) -> Generator[str, None, None]:
         output_file = os.path.splitext(self.filepath)[0] + "." + output_format
 
         quality_settings = {
@@ -61,14 +87,12 @@ class Video:
         }
         crf = quality_settings.get(quality, "28")
 
-        command = ["ffmpeg", "-i", self.filepath, "-crf", crf, output_file]
+        ffmpeg_path = shutil.which("ffmpeg")
+        if ffmpeg_path is None:
+            raise FileNotFoundError("ffmpeg not found")
 
-        result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        if result.returncode != 0:
-            print("Error during conversion:", result.stderr.decode())
-            return None
-
-        return output_file
+        command = [ffmpeg_path, "-i", self.filepath, "-crf", crf, output_file]
+        yield from self._run(command)
 
     def repair(self) -> str:
         output_file = self.filepath.rsplit(".", 1)[0] + "_repaired.mp4"
