@@ -39,13 +39,12 @@ class TestVideo(unittest.TestCase):
         self.assertIn("aac", self.test_video.audio_tracks)
         self.assertIn("srt", self.test_video.subtitles)
 
-    @patch("subprocess.run")
+    @patch("video.video.Video._run")
     def test_convert(self, mock_run: MagicMock) -> None:
-        mock_run.return_value = MagicMock(returncode=0)
-        output_file = self.test_video.convert("avi", "low")
+        mock_run.return_value = iter(["Ligne de sortie de ffmpeg"])
+        generator = self.test_video.convert("avi", "low")
+        list(generator)  # Consume the generator to trigger _run
         mock_run.assert_called()
-        if output_file is not None:
-            self.assertIn(".avi", output_file)
 
     @patch("subprocess.run")
     def test_repair(self, mock_run: MagicMock) -> None:
