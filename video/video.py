@@ -1,23 +1,24 @@
 import json
 import os
 import subprocess
+from typing import Any, Dict, List, Optional
 
 
 class Video:
-    def __init__(self, filepath):
-        self.filepath = filepath
-        self.format = None
-        self.metadata = {}
-        self.duration = None
-        self.resolution = None
-        self.bitrate = None
-        self.audio_tracks = []
-        self.subtitles = []
-        self.codec = None
+    def __init__(self, filepath: str):
+        self.filepath: str = filepath
+        self.format: Optional[str] = None
+        self.metadata: Dict[str, Any] = {}
+        self.duration: Optional[float] = None
+        self.resolution: Optional[str] = None
+        self.bitrate: Optional[int] = None
+        self.audio_tracks: List[str] = []
+        self.subtitles: List[str] = []
+        self.codec: Optional[str] = None
 
         self.get_metadata()
 
-    def get_metadata(self):
+    def get_metadata(self) -> None:
         command = [
             "ffprobe",
             "-v",
@@ -34,7 +35,7 @@ class Video:
         self.metadata = metadata
         self._parse_metadata(metadata)
 
-    def _parse_metadata(self, metadata):
+    def _parse_metadata(self, metadata: Dict[str, Any]) -> None:
         """Parses the metadata and assigns values to the class attributes"""
         if "format" in metadata:
             self.format = metadata["format"].get("format_name")
@@ -50,27 +51,26 @@ class Video:
             elif stream["codec_type"] == "subtitle":
                 self.subtitles.append(stream.get("codec_name"))
 
-    def convert(self, output_format, quality="middle"):
+    def convert(self, output_format: str, quality: str = "middle") -> Optional[str]:
         output_file = os.path.splitext(self.filepath)[0] + "." + output_format
 
-        # Paramètres de qualité
         quality_settings = {
-            "low": "35",  # CRF plus élevé signifie une qualité inférieure
+            "low": "35",
             "middle": "28",
-            "high": "20",  # CRF plus bas signifie une meilleure qualité
+            "high": "20",
         }
-        crf = quality_settings.get(quality, "28")  # Valeur par défaut pour middle
+        crf = quality_settings.get(quality, "28")
 
         command = ["ffmpeg", "-i", self.filepath, "-crf", crf, output_file]
 
         result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         if result.returncode != 0:
-            print("Erreur lors de la conversion :", result.stderr.decode())
+            print("Error during conversion:", result.stderr.decode())
             return None
 
         return output_file
 
-    def repair(self):
+    def repair(self) -> str:
         output_file = self.filepath.rsplit(".", 1)[0] + "_repaired.mp4"
         command = [
             "ffmpeg",
@@ -85,16 +85,16 @@ class Video:
         subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         return output_file
 
-    def extract_audio(self, audio_format):
+    def extract_audio(self, audio_format: str) -> Optional[str]:
         output_file = os.path.splitext(self.filepath)[0] + "." + audio_format
 
         command = [
             "ffmpeg",
             "-i",
             self.filepath,
-            "-vn",  # Désactive la partie vidéo
+            "-vn",
             "-acodec",
-            audio_format,  # Spécifie le codec audio
+            audio_format,
             output_file,
         ]
 
@@ -106,11 +106,10 @@ class Video:
         return output_file
 
 
-# Classe pour gérer une liste de vidéos
 class VideoList:
-    def __init__(self, video_list):
-        self.video_list = video_list
+    def __init__(self, video_list: List[Video]):
+        self.video_list: List[Video] = video_list
 
-    def convert_all(self, output_format):
-        # Convertir toutes les vidéos de la liste
+    def convert_all(self, output_format: str) -> None:
+        # Convert all videos in the list
         pass
