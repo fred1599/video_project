@@ -16,8 +16,7 @@ class TestVideo(unittest.TestCase):
         mock_run.assert_called()
         self.assertIsNotNone(self.test_video.metadata)
 
-    @patch("subprocess.run")
-    def test_parse_metadata(self, mock_run):
+    def test_parse_metadata(self):
         fake_metadata = {
             "format": {"format_name": "mp4", "duration": "100.0", "bit_rate": "1000"},
             "streams": [
