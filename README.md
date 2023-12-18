@@ -60,25 +60,25 @@ The application is executed via the command line. Here are the different command
 
 We warmly welcome community contributions! If you would like to contribute to the [video_project](https://github.com/fred1599/video_project), here are the steps to follow:
 
-1. **Fork the Project**  
+1. **Fork the Project**
    Start by forking the project on your GitHub account. This creates a personal copy of the project that you can work on. You can fork the project by clicking the "Fork" button at the top right of the project page.
 
-2. **Clone the Fork**  
+2. **Clone the Fork**
    Next, clone your fork to your local machine. This will allow you to work on the project locally. Use the command:
 
 `git clone https://github.com/your-username/video_project.git`
 
 Replace `your-username` with your GitHub username.
 
-3. **Create a Branch**  
+3. **Create a Branch**
 Create a new branch for your changes. This helps to separate your contributions from others and makes managing changes easier. For example:
 
 `git checkout -b your-branch-name`
 
-4. **Make Your Changes**  
+4. **Make Your Changes**
 Make your changes in this branch. Be sure to follow the project's coding conventions and add tests if necessary.
 
-5. **Commit and Push**  
+5. **Commit and Push**
 After making your changes, commit them and push them to your fork. For example:
 
 ```bash
@@ -86,13 +86,13 @@ git commit -m "Added a new feature"
 git push origin your-branch-name
 ```
 
-6. **Create a Pull Request**  
+6. **Create a Pull Request**
 Once your changes are pushed to your fork, create a pull request on the main repository. Go to the GitHub page of your fork and click on "Pull Request", then follow the instructions to submit your pull request.
 
-7. **Wait for Review**  
+7. **Wait for Review**
 Your pull request will be reviewed by the project maintainers. They may ask you to make further changes. Once your pull request is approved, it will be merged into the main project.
 
-8. **Keep Your Fork Up to Date**  
+8. **Keep Your Fork Up to Date**
 After contributing, keep your fork up to date with the main repository. You can do this by setting up an "upstream" remote and regularly syncing your fork:
 
 ```bash
@@ -108,25 +108,25 @@ Thank you for your contribution to the project!
 
 Nous accueillons avec plaisir les contributions de la communauté ! Si vous souhaitez contribuer au projet [video_project](https://github.com/fred1599/video_project), voici les étapes à suivre :
 
-1. **Forker le Projet**  
+1. **Forker le Projet**
    Commencez par forker le projet sur votre compte GitHub. Cela crée une copie personnelle du projet sur laquelle vous pouvez travailler. Vous pouvez forker le projet en cliquant sur le bouton "Fork" en haut à droite de la page du projet.
 
-2. **Cloner le Fork**  
+2. **Cloner le Fork**
    Ensuite, clonez votre fork sur votre machine locale. Cela vous permettra de travailler sur le projet en local. Utilisez la commande :
 
 `git clone https://github.com/votre-username/video_project.git`
 
 Remplacez `votre-username` par votre nom d'utilisateur GitHub.
 
-3. **Créer une Branche**  
+3. **Créer une Branche**
 Créez une nouvelle branche pour vos modifications. Cela aide à séparer vos contributions des autres et facilite la gestion des modifications. Par exemple :
 
 `git checkout -b nom-de-votre-branche`
 
-4. **Apporter vos Modifications**  
+4. **Apporter vos Modifications**
 Effectuez vos modifications dans cette branche. Assurez-vous de suivre les conventions de codage du projet et d'ajouter des tests si nécessaire.
 
-5. **Commit et Push**  
+5. **Commit et Push**
 Après avoir effectué vos modifications, committez-les et poussez-les sur votre fork. Par exemple :
 
 ```bash
@@ -134,13 +134,13 @@ git commit -m "Ajout d'une nouvelle fonctionnalité"
 git push origin nom-de-votre-branche
 ```
 
-6. **Créer une Pull Request**  
+6. **Créer une Pull Request**
 Une fois vos modifications poussées sur votre fork, créez une pull request sur le dépôt principal. Allez sur la page GitHub de votre fork et cliquez sur "Pull Request", puis suivez les instructions pour soumettre votre pull request.
 
-7. **Attendez la Revue**  
+7. **Attendez la Revue**
 Votre pull request sera examinée par les mainteneurs du projet. Ils peuvent vous demander de faire des modifications supplémentaires. Une fois votre pull request approuvée, elle sera fusionnée dans le projet principal.
 
-8. **Gardez votre Fork à Jour**  
+8. **Gardez votre Fork à Jour**
 Après avoir contribué, gardez votre fork à jour avec le dépôt principal. Vous pouvez le faire en configurant un remote "upstream" et en synchronisant régulièrement votre fork :
 
 ```bash
