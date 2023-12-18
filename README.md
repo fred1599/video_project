@@ -63,10 +63,14 @@ We warmly welcome community contributions! If you would like to contribute to th
 1. **Fork the Project**
    Start by forking the project on your GitHub account. This creates a personal copy of the project that you can work on. You can fork the project by clicking the "Fork" button at the top right of the project page.
 
-2. **Clone the Fork**
+2. **Clone the Fork and Install pre-commit**
    Next, clone your fork to your local machine. This will allow you to work on the project locally. Use the command:
 
-`git clone https://github.com/your-username/video_project.git`
+```bash
+git clone https://github.com/your-username/video_project.git
+pip install -r requirements_dev.txt
+pre-commit install
+```
 
 Replace `your-username` with your GitHub username.
 
@@ -82,6 +86,7 @@ Make your changes in this branch. Be sure to follow the project's coding convent
 After making your changes, commit them and push them to your fork. For example:
 
 ```bash
+pre-commit run --all-files
 git commit -m "Added a new feature"
 git push origin your-branch-name
 ```
@@ -111,10 +116,14 @@ Nous accueillons avec plaisir les contributions de la communauté ! Si vous souh
 1. **Forker le Projet**
    Commencez par forker le projet sur votre compte GitHub. Cela crée une copie personnelle du projet sur laquelle vous pouvez travailler. Vous pouvez forker le projet en cliquant sur le bouton "Fork" en haut à droite de la page du projet.
 
-2. **Cloner le Fork**
+2. **Cloner le Fork et installer pre-commit**
    Ensuite, clonez votre fork sur votre machine locale. Cela vous permettra de travailler sur le projet en local. Utilisez la commande :
 
-`git clone https://github.com/votre-username/video_project.git`
+```bash
+git clone https://github.com/your-username/video_project.git
+pip install -r requirements_dev.txt
+pre-commit install
+```
 
 Remplacez `votre-username` par votre nom d'utilisateur GitHub.
 
@@ -130,8 +139,9 @@ Effectuez vos modifications dans cette branche. Assurez-vous de suivre les conve
 Après avoir effectué vos modifications, committez-les et poussez-les sur votre fork. Par exemple :
 
 ```bash
-git commit -m "Ajout d'une nouvelle fonctionnalité"
-git push origin nom-de-votre-branche
+pre-commit run --all-files
+git commit -m "Added a new feature"
+git push origin your-branch-name
 ```
 
 6. **Créer une Pull Request**
