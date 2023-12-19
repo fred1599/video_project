@@ -81,16 +81,10 @@ app = typer.Typer()
 
 
 @app.command()  # type: ignore
-def main(
-    command: str = typer.Option(
-        ...,
-        "--command",
-        "-c",
-        help="Command to execute (convert, repair, extract_audio)",
-    ),
+def convert(
     input: str = typer.Option(..., "--input", "-i", help="Path to the video file"),
     output: str = typer.Option(
-        None, "--output", "-o", help="Output format for conversion or audio extraction"
+        ..., "--output", "-o", help="Output format for conversion"
     ),
     quality: str = typer.Option(
         "middle",
@@ -99,22 +93,21 @@ def main(
         help="Quality of the conversion (low, middle, high)",
     ),
 ) -> None:
-    if command == "convert":
-        convert_video(input, output, quality)
-    elif command == "repair":
-        repair_video(input)
-    elif command == "extract_audio":
-        extract_audio_from_video(input, output)
-    else:
-        typer.echo(
-            "Invalid command. Please use 'convert', 'repair', or 'extract_audio'."
-        )
+    convert_video(input, output, quality)
 
 
-if __name__ == "__main__":
-    try:
-        check_ffmpeg_and_ffprobe()
-        typer.run(main)
-    except Exception as e:
-        typer.echo(f"An error occurred: {e}")
-        sys.exit(1)
+@app.command()  # type: ignore
+def repair(
+    input: str = typer.Option(..., "--input", "-i", help="Path to the video file")
+) -> None:
+    repair_video(input)
+
+
+@app.command()  # type: ignore
+def extractaudio(
+    input: str = typer.Option(..., "--input", "-i", help="Path to the video file"),
+    output: str = typer.Option(
+        ..., "--output", "-o", help="Output format for audio extraction"
+    ),
+) -> None:
+    extract_audio_from_video(input, output)
